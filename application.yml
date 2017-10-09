@@ -3,26 +3,28 @@ info:
   url: https://github.com/spring-cloud-samples
 eureka:
   client:
-    serviceUrl:
+    service-url:
       defaultZone: http://localhost:8761/eureka/
       
 foo: baz
 
----
 spring:
   profiles: cloud
   cloud:
     config:
       uri: ${vcap.services.${PREFIX:}configserver.credentials.uri:http://user:password@${PREFIX:}configserver.${application.domain:cfapps.io}}
-oauth2:
-  client:
-    tokenUri: ${vcap.services.${PREFIX:}sso.credentials.tokenUri:}
-    authorizationUri: ${vcap.services.${PREFIX:}sso.credentials.authorizationUri:}
-    clientId: ${vcap.services.${PREFIX:}sso.credentials.clientId:}
-    clientSecret: ${vcap.services.${PREFIX:}sso.credentials.clientSecret:}
-  resource:
-    tokenInfoUri: ${vcap.services.${OAUTH2_RESOURCE_SERVICEID:${oauth2.resource.serviceId:sso}}.credentials.tokenInfoUri:}
-    serviceId: ${PREFIX:}resource
+
+security:
+   oauth2:
+      client:
+        access-token-uri: ${vcap.services.${PREFIX:}sso.credentials.tokenUri:}
+        user-authorization-uri: ${vcap.services.${PREFIX:}sso.credentials.authorizationUri:}
+        client-id: ${vcap.services.${PREFIX:}sso.credentials.clientId:}
+        client-secret: ${vcap.services.${PREFIX:}sso.credentials.clientSecret:}
+      resource:
+        token-info-uri: ${vcap.services.${OAUTH2_RESOURCE_SERVICEID:${oauth2.resource.serviceId:sso}}.credentials.tokenInfoUri:}
+        service-id: ${PREFIX:}resource
+
 application:
   domain: ${APPLICATION_DOMAIN:cfapps.io}
 endpoints:
@@ -33,14 +35,13 @@ eureka:
     hostname: ${vcap.application.uris[0]:localhost}
     nonSecurePort: 80
   client:
-    serviceUrl:
+    service-url:
       defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:${eureka.password:}@${PREFIX:}eureka.${application.domain:cfapps.io}}/eureka/
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
 ribbon:
   ConnectTimeout: 3000
   ReadTimeout: 60000
 
----
 spring:
   profiles: docker
   cloud:
@@ -50,9 +51,9 @@ endpoints:
   restart: enabled
 eureka:
   instance:
-    nonSecurePort: 80
-    preferIpAddress: true
+    non-secure-port: 80
+    prefer-ip-address: true
   client:
-    serviceUrl:
+    service-url:
       defaultZone: http://${EUREKA_1_PORT_8761_TCP_ADDR:localhost}:8761/eureka/
 

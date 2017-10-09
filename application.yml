@@ -8,35 +8,35 @@ eureka:
       
 foo: baz
 
-#spring:
-#  profiles: cloud
-#  cloud:
-#    config:
-#      uri: ${vcap.services.${PREFIX:}configserver.credentials.uri:http://user:password@${PREFIX:}configserver.${application.domain:cfapps.io}}
+spring:
+  profiles: cloud
+  cloud:
+    config:
+      uri: ${vcap.services.${PREFIX:}configserver.credentials.uri:http://user:password@${PREFIX:}configserver.${application.domain:cfapps.io}}
 
-security:
-   oauth2:
-      client:
-        access-token-uri: ${vcap.services.${PREFIX:}sso.credentials.tokenUri:}
-        user-authorization-uri: ${vcap.services.${PREFIX:}sso.credentials.authorizationUri:}
-        client-id: ${vcap.services.${PREFIX:}sso.credentials.clientId:}
-        client-secret: ${vcap.services.${PREFIX:}sso.credentials.clientSecret:}
-      resource:
-        token-info-uri: ${vcap.services.${OAUTH2_RESOURCE_SERVICEID:${oauth2.resource.serviceId:sso}}.credentials.tokenInfoUri:}
-        service-id: ${PREFIX:}resource
+#security:
+#   oauth2:
+#      client:
+#        access-token-uri: ${vcap.services.${PREFIX:}sso.credentials.tokenUri:}
+#        user-authorization-uri: ${vcap.services.${PREFIX:}sso.credentials.authorizationUri:}
+#        client-id: ${vcap.services.${PREFIX:}sso.credentials.clientId:}
+#        client-secret: ${vcap.services.${PREFIX:}sso.credentials.clientSecret:}
+#      resource:
+#        token-info-uri: ${vcap.services.${OAUTH2_RESOURCE_SERVICEID:${oauth2.resource.serviceId:sso}}.credentials.tokenInfoUri:}
+#        service-id: ${PREFIX:}resource
 
 application:
   domain: ${APPLICATION_DOMAIN:cfapps.io}
 endpoints:
   restart: enabled
 eureka:
-#  password: password
+  password: password
   instance:
     hostname: ${vcap.application.uris[0]:localhost}
     nonSecurePort: 80
-#  client:
-#    service-url:
-#      defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:${eureka.password:}@${PREFIX:}eureka.${application.domain:cfapps.io}}/eureka/
+  client:
+    service-url:
+      defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:${eureka.password:}@${PREFIX:}eureka.${application.domain:cfapps.io}}/eureka/
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
 ribbon:
   ConnectTimeout: 3000

@@ -49,3 +49,5 @@ spring:
 
 endpoints:
   restart: enabled
+
+from: git-dev-1.0

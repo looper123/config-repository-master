@@ -41,13 +41,6 @@ spring:
   cloud:
     config:
       uri: http://${CONFIGSERVER_1_PORT_8888_TCP_ADDR:localhost}:8888
-      server:
-  #      远程配置文件路径
-          git:
-            uri: https://github.com/looper123/config-repository-master.git
-            search-paths: config-repository
-            username: m17701848923@163.com
-            password: lzp19920312
 
 #spring:
 #  profiles: cloud

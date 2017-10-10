@@ -15,11 +15,6 @@ eureka:
 #      defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:${eureka.password:}@${PREFIX:}eureka.${application.domain:cfapps.io}}/eureka/
 foo: baz
 
-spring:
-  profiles: cloud
-  cloud:
-    config:
-      uri: ${vcap.services.${PREFIX:}configserver.credentials.uri:http://user:password@${PREFIX:}configserver.${application.domain:cfapps.io}}
 
 #security:
 #   oauth2:
@@ -43,10 +38,17 @@ ribbon:
   ReadTimeout: 60000
 
 spring:
-  profiles: docker
+  profiles: dev
   cloud:
     config:
       uri: http://${CONFIGSERVER_1_PORT_8888_TCP_ADDR:localhost}:8888
+#spring:
+#  profiles: cloud
+#  cloud:
+#    config:
+#      uri: ${vcap.services.${PREFIX:}configserver.credentials.uri:http://user:password@${PREFIX:}configserver.${application.domain:cfapps.io}}
+
+
 endpoints:
   restart: enabled
 eureka:

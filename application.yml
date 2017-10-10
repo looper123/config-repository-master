@@ -14,7 +14,6 @@ eureka:
 #  client:
 #    service-url:
 #      defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:${eureka.password:}@${PREFIX:}eureka.${application.domain:cfapps.io}}/eureka/
-foo: baz
 
 
 #security:
@@ -50,4 +49,3 @@ spring:
 endpoints:
   restart: enabled
 
-from: git-dev-1.0

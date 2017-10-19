@@ -15,16 +15,16 @@ spring:
             spring:
               rabbitmq:
                 host: 127.0.0.1
-                port: 5672
+                port: 5673
                 username: guest
                 password: guest
-#          rabbit2:
-#            type: rabbit
-#            envirorunent:
-#              spring:
-#                rabbitmq:
-#                  host: 127.0.0.1
-#                  prot: 5672
-#                  username: guest
-#                  password: guest
+          rabbit:
+            type: rabbit
+            envirorunent:
+              spring:
+                rabbitmq:
+                  host: 127.0.0.1
+                  prot: 5672
+                  username: guest
+                  password: guest
 

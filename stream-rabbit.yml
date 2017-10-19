@@ -6,19 +6,18 @@ spring:
     port: 5673
     username: guest
     password: guest
-
   cloud:
     stream:
       binders:
-         rabbit:
-            type: rabbit1
-            envirorunent:
-              spring:
-                rabbitmq:
-                  host: 127.0.0.1
-                  port: 5672
-                  username: guest
-                  password: guest
+        rabbit1:
+          type: rabbit
+          envirorunent:
+            spring:
+              rabbitmq:
+                host: 127.0.0.1
+                port: 5672
+                username: guest
+                password: guest
 #          rabbit2:
 #            type: rabbit
 #            envirorunent:

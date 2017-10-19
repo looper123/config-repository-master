@@ -1,5 +1,11 @@
 #    多个rabbit定义
 spring:
+# rabbitmq 控制台 localhost:15672
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5673
+    username: guest
+    password: guest
   cloud:
     stream:
       binders:

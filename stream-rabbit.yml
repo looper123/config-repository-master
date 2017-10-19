@@ -10,8 +10,8 @@ spring:
   cloud:
     stream:
       binders:
-         rabbit1:
-            type: rabbit
+         rabbit:
+            type: rabbit1
             envirorunent:
               spring:
                 rabbitmq:

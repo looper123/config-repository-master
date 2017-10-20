@@ -15,16 +15,17 @@ spring:
             spring:
               rabbitmq:
                 host: 127.0.0.1
-                port: 5673
+                port: 5672
                 username: guest
                 password: guest
+#    若果配置了default-binder 一定要配置 不然会报 找不到配置名为 rabbit的binder
         rabbit:
           type: rabbit
           envirorunent:
             spring:
               rabbitmq:
                 host: 127.0.0.1
-                prot: 5672
+                prot: 5673
                 username: guest
                 password: guest
 
